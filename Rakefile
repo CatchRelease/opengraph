@@ -11,8 +11,8 @@ begin
     gem.homepage = "http://github.com/intridea/opengraph"
     gem.authors = ["Michael Bleigh"]
     gem.add_dependency 'hashie'
-    gem.add_dependency 'nokogiri', '~> 1.5.0'
-    gem.add_dependency 'rest-client', '~> 1.6.0'
+    gem.add_dependency 'nokogiri', '>= 1.6.0'
+    gem.add_dependency 'rest-client', '>= 1.6.0'
     gem.add_development_dependency "rspec", ">= 2.0.0"
     gem.add_development_dependency 'webmock'
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
