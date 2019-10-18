@@ -21,7 +21,7 @@ module OpenGraph
     doc = Nokogiri::HTML.parse(html)
     page = OpenGraph::Object.new
     doc.css('meta').each do |m|
-      if m.attribute('property') && m.attribute('property').to_s.match(/^og:(.+)$/i)
+      if m.attribute('property')&.to_s&.match(/^og:(.+)$/i)
         page[$1.gsub('-','_')] = m.attribute('content').to_s
       end
     end
@@ -39,12 +39,12 @@ module OpenGraph
     'place' => %w(city country landmark state_province),
     'product' => %w(album book drink food game movie product song tv_show),
     'website' => %w(blog website)
-  }
+  }.freeze
 
   # The OpenGraph::Object is a Hash with method accessors for
   # all detected Open Graph attributes.
   class Object < Hashie::Mash
-    MANDATORY_ATTRIBUTES = %w(title type image url)
+    MANDATORY_ATTRIBUTES = %w(title type image url).freeze
 
     # The object type.
     def type
