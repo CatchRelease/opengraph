@@ -1,2 +1,2 @@
 --colour
---format nested
+--require spec_helper
