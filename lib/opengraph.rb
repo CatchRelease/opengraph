@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
-require 'bundler'
-Bundler.require
+require 'addressable'
+require 'hashie'
+require 'nokogiri'
+require 'rest-client'
 
 module OpenGraph
   # Fetch Open Graph data from the specified URI. Makes an
@@ -45,7 +47,7 @@ module OpenGraph
 
   # The OpenGraph::Object is a Hash with method accessors for
   # all detected Open Graph attributes.
-  class Object < Hashie::Mash
+  class Object < ::Hashie::Mash
     MANDATORY_ATTRIBUTES = %w[title type image url].freeze
 
     # The object type.
