@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-# require 'hashie'
-# require 'nokogiri'
-# require 'restclient'
 require 'bundler'
 Bundler.require
 
@@ -14,7 +11,8 @@ module OpenGraph
   # Pass <tt>false</tt> for the second argument if you want to
   # see invalid (i.e. missing a required attribute) data.
   def self.fetch(uri, strict = true)
-    parse(RestClient.get(uri).body, strict)
+    normalized = Addressable::URI.parse(uri).normalize.to_str
+    parse(RestClient.get(normalized).body, strict)
   rescue RestClient::Exception, SocketError
     false
   end

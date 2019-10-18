@@ -34,10 +34,19 @@ describe OpenGraph do
       expect(WebMock).to have_requested(:get, 'http://www.rottentomatoes.com/m/1217700-kick_ass/')
     end
 
+    it 'successfully fetches from urls containing unicode characters' do
+      url = 'https://muffins.net/muffinz?utf8=✓'
+      stub_request(:get, url).to_return(body: '<html />')
+
+      expect do
+        described_class.fetch(url, false)
+      end.not_to raise_error(URI::InvalidURIError)
+    end
+
     it 'should catch errors' do
       stub_request(:get, 'http://example.com').to_return(status: 404)
       expect(OpenGraph.fetch('http://example.com')).to be false
-      expect(RestClient).to receive(:get).with('http://example.com').and_raise(SocketError)
+      allow(RestClient).to receive(:get).with('http://example.com/').and_raise(SocketError)
       expect(OpenGraph.fetch('http://example.com')).to be false
     end
   end

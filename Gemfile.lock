@@ -57,6 +57,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  addressable
   hashie
   nokogiri (>= 1.6.0)
   opengraph!
