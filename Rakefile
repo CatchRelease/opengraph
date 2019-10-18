@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rubygems'
 require 'rake'
 
@@ -11,11 +13,11 @@ RSpec::Core::RakeTask.new(:rcov) do |spec|
   spec.rcov = true
 end
 
-task :default => :spec
+task default: :spec
 
 require 'rdoc/task'
 RDoc::Task.new do |rdoc|
-  version = File.exist?('VERSION') ? File.read('VERSION') : ""
+  version = File.exist?('VERSION') ? File.read('VERSION') : ''
 
   rdoc.rdoc_dir = 'rdoc'
   rdoc.title = "opengraph #{version}"

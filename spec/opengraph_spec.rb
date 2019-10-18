@@ -3,8 +3,8 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 describe OpenGraph do
-  let(:rotten){ File.open(File.dirname(__FILE__) + '/examples/rottentomatoes.html').read }
-  let(:partial){ File.open(File.dirname(__FILE__) + '/examples/partial.html').read }
+  let(:rotten) { File.open(File.dirname(__FILE__) + '/examples/rottentomatoes.html').read }
+  let(:partial) { File.open(File.dirname(__FILE__) + '/examples/partial.html').read }
 
   describe '.parse' do
     it 'should return false if there isnt valid Open Graph info' do
@@ -44,10 +44,10 @@ describe OpenGraph do
 end
 
 describe OpenGraph::Object do
-  let(:rotten){ File.open(File.dirname(__FILE__) + '/examples/rottentomatoes.html')}
+  let(:rotten) { File.open(File.dirname(__FILE__) + '/examples/rottentomatoes.html') }
 
   context ' a Rotten Tomatoes Movie' do
-    subject{ OpenGraph.parse(rotten) }
+    subject { OpenGraph.parse(rotten) }
 
     it 'should have the title' do
       expect(subject.title).to eq 'Kick-Ass'

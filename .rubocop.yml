@@ -1,0 +1,14 @@
+Style/AbcSize:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/LineLength:
+  AllowHeredoc: true
+  AllowURI: true
+  Max: 120
+
+Style/Documentation:
+  Enabled: false
+
